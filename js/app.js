@@ -9,18 +9,34 @@
   let deferredInstall = null;
 
   // ── Splash → App ──────────────────────────────────────────────────────
-  window.addEventListener('load', () => {
+  function showApp() {
+    const splash = document.getElementById('splash');
+    const app    = document.getElementById('app');
+    if (!splash || !app) return;
+    if (app._ready) return; // prevent double-call
+    app._ready = true;
+    splash.classList.add('fade-out');
     setTimeout(() => {
-      const splash = document.getElementById('splash');
-      const app    = document.getElementById('app');
-      splash.classList.add('fade-out');
-      setTimeout(() => {
-        splash.style.display = 'none';
-        app.classList.remove('hidden');
-        onAppReady();
-      }, 600);
-    }, 2000);
-  });
+      splash.style.display = 'none';
+      app.classList.remove('hidden');
+      onAppReady();
+    }, 500);
+  }
+
+  // Show app after 1.8s, or immediately when page loads — whichever is first
+  const splashTimer = setTimeout(showApp, 1800);
+
+  if (document.readyState === 'complete') {
+    clearTimeout(splashTimer);
+    setTimeout(showApp, 1200);
+  } else {
+    window.addEventListener('load', () => {
+      clearTimeout(splashTimer);
+      setTimeout(showApp, 1200);
+    });
+    // Hard fallback — never stay stuck
+    setTimeout(showApp, 3500);
+  }
 
   function onAppReady() {
     Network.init();
