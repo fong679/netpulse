@@ -1,52 +1,80 @@
-// ── sw.js — Service Worker ──────────────────────────────────────────────
-const CACHE = 'netpulse-v1.0.0';
+// ── sw.js — Service Worker v2 ───────────────────────────────────────────
+const CACHE_NAME = 'netpulse-v2';
+const BASE = '/netpulse';
 const ASSETS = [
-  '/',
-  '/index.html',
-  '/css/style.css',
-  '/js/storage.js',
-  '/js/network.js',
-  '/js/gauge.js',
-  '/js/speedtest.js',
-  '/js/diagnostics.js',
-  '/js/history-chart.js',
-  '/js/app.js',
-  '/manifest.json',
+  BASE + '/',
+  BASE + '/index.html',
+  BASE + '/css/style.css',
+  BASE + '/js/storage.js',
+  BASE + '/js/network.js',
+  BASE + '/js/gauge.js',
+  BASE + '/js/speedtest.js',
+  BASE + '/js/diagnostics.js',
+  BASE + '/js/history-chart.js',
+  BASE + '/js/app.js',
+  BASE + '/manifest.json',
+  BASE + '/icons/icon-192.png',
+  BASE + '/icons/icon-512.png',
 ];
 
+// Install — cache all app shell assets
 self.addEventListener('install', event => {
   event.waitUntil(
-    caches.open(CACHE).then(cache => cache.addAll(ASSETS))
+    caches.open(CACHE_NAME)
+      .then(cache => cache.addAll(ASSETS))
+      .then(() => self.skipWaiting())
   );
-  self.skipWaiting();
 });
 
+// Activate — remove old caches
 self.addEventListener('activate', event => {
   event.waitUntil(
     caches.keys().then(keys =>
-      Promise.all(keys.filter(k => k !== CACHE).map(k => caches.delete(k)))
-    )
+      Promise.all(
+        keys.filter(k => k !== CACHE_NAME).map(k => caches.delete(k))
+      )
+    ).then(() => self.clients.claim())
   );
-  self.clients.claim();
 });
 
+// Fetch — cache-first for app shell, network-only for speed tests
 self.addEventListener('fetch', event => {
-  // Pass through test/measurement requests
   const url = event.request.url;
-  if (url.includes('cloudflare') || url.includes('httpbin') || url.includes('google') || url.includes('gstatic')) {
-    return; // network only
+
+  // Always go to network for speed test endpoints
+  if (
+    url.includes('cloudflare.com') ||
+    url.includes('httpbin.org') ||
+    url.includes('gstatic.com/generate_204') ||
+    url.includes('fonts.googleapis') ||
+    url.includes('fonts.gstatic')
+  ) {
+    return;
   }
 
+  // Cache-first strategy for everything else
   event.respondWith(
     caches.match(event.request).then(cached => {
       if (cached) return cached;
-      return fetch(event.request).then(res => {
-        if (res.ok && event.request.method === 'GET') {
-          const clone = res.clone();
-          caches.open(CACHE).then(cache => cache.put(event.request, clone));
-        }
-        return res;
-      }).catch(() => caches.match('/index.html'));
+
+      return fetch(event.request)
+        .then(response => {
+          if (
+            response.ok &&
+            event.request.method === 'GET' &&
+            !url.includes('chrome-extension')
+          ) {
+            const clone = response.clone();
+            caches.open(CACHE_NAME).then(cache => cache.put(event.request, clone));
+          }
+          return response;
+        })
+        .catch(() => {
+          // Offline fallback
+          if (event.request.mode === 'navigate') {
+            return caches.match(BASE + '/index.html');
+          }
+        });
     })
   );
 });
