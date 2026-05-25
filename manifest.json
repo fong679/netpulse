@@ -1,6 +1,7 @@
 {
   "name": "NetPulse — Network Diagnostics",
   "short_name": "NetPulse",
+  "id": "/netpulse/",
   "description": "Professional network speed test & diagnostics for Wi-Fi and cellular connections",
   "start_url": "/netpulse/",
   "scope": "/netpulse/",
