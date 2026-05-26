@@ -67,6 +67,8 @@
   }
 
   // ── Navigation ────────────────────────────────────────────────────────
+  let netInfoLoaded = false;
+
   function bindNav() {
     document.querySelectorAll('.nav-btn').forEach(btn => {
       btn.addEventListener('click', () => {
@@ -78,6 +80,7 @@
         if (target) {
           target.classList.add('active');
           if (page === 'history') renderHistoryPage();
+          if (page === 'netinfo' && !netInfoLoaded) { netInfoLoaded = true; NetInfo.init(); }
         }
       });
     });

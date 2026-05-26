@@ -34,17 +34,14 @@
           <circle cx="40" cy="40" r="5" fill="url(#grad1)"/>
           <defs>
             <linearGradient id="grad1" x1="0" y1="0" x2="80" y2="80" gradientUnits="userSpaceOnUse">
-              <stop offset="0%" stop-color="#00f5d4"/>
-              <stop offset="100%" stop-color="#7b2ff7"/>
+              <stop offset="0%" stop-color="#00f5d4"/><stop offset="100%" stop-color="#7b2ff7"/>
             </linearGradient>
           </defs>
         </svg>
       </div>
       <h1 class="splash-title">NetPulse</h1>
       <p class="splash-sub">Network Diagnostics</p>
-      <div class="splash-loader">
-        <div class="splash-bar"></div>
-      </div>
+      <div class="splash-loader"><div class="splash-bar"></div></div>
     </div>
   </div>
 
@@ -61,14 +58,11 @@
       <span id="live-time" class="live-time">--:--</span>
     </div>
 
-    <!-- Page Container -->
     <div class="pages">
 
-      <!-- ── DASHBOARD PAGE ── -->
+      <!-- ── SPEED PAGE ── -->
       <div id="page-dashboard" class="page active">
         <div class="page-scroll">
-
-          <!-- Hero Gauge -->
           <section class="hero-section">
             <div class="gauge-wrap">
               <canvas id="gauge-canvas" width="280" height="160"></canvas>
@@ -79,68 +73,35 @@
               </div>
             </div>
           </section>
-
-          <!-- Quick Stats Row -->
           <section class="quick-stats">
             <div class="stat-card" id="stat-ping">
-              <div class="stat-icon ping-icon">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-              </div>
-              <div class="stat-info">
-                <span class="stat-val" id="ping-val">--</span>
-                <span class="stat-label">Ping (ms)</span>
-              </div>
+              <div class="stat-icon ping-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+              <div class="stat-info"><span class="stat-val" id="ping-val">--</span><span class="stat-label">Ping (ms)</span></div>
               <div class="stat-bar-wrap"><div class="stat-bar" id="ping-bar"></div></div>
             </div>
             <div class="stat-card" id="stat-jitter">
-              <div class="stat-icon jitter-icon">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-              </div>
-              <div class="stat-info">
-                <span class="stat-val" id="jitter-val">--</span>
-                <span class="stat-label">Jitter (ms)</span>
-              </div>
+              <div class="stat-icon jitter-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+              <div class="stat-info"><span class="stat-val" id="jitter-val">--</span><span class="stat-label">Jitter (ms)</span></div>
               <div class="stat-bar-wrap"><div class="stat-bar" id="jitter-bar"></div></div>
             </div>
             <div class="stat-card" id="stat-loss">
-              <div class="stat-icon loss-icon">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
-              </div>
-              <div class="stat-info">
-                <span class="stat-val" id="loss-val">--</span>
-                <span class="stat-label">Packet Loss</span>
-              </div>
+              <div class="stat-icon loss-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg></div>
+              <div class="stat-info"><span class="stat-val" id="loss-val">--</span><span class="stat-label">Packet Loss</span></div>
               <div class="stat-bar-wrap"><div class="stat-bar" id="loss-bar"></div></div>
             </div>
           </section>
-
-          <!-- Speed Cards -->
           <section class="speed-cards">
             <div class="speed-card download-card">
-              <div class="speed-card-top">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v14M5 9l7 7 7-7"/><path d="M3 21h18"/></svg>
-                <span>Download</span>
-              </div>
-              <div class="speed-val-row">
-                <span id="dl-val" class="big-speed">--</span>
-                <span class="speed-unit">Mbps</span>
-              </div>
+              <div class="speed-card-top"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v14M5 9l7 7 7-7"/><path d="M3 21h18"/></svg><span>Download</span></div>
+              <div class="speed-val-row"><span id="dl-val" class="big-speed">--</span><span class="speed-unit">Mbps</span></div>
               <div class="speed-spark" id="dl-spark"></div>
             </div>
             <div class="speed-card upload-card">
-              <div class="speed-card-top">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22V8M5 15l7-7 7 7"/><path d="M3 3h18"/></svg>
-                <span>Upload</span>
-              </div>
-              <div class="speed-val-row">
-                <span id="ul-val" class="big-speed">--</span>
-                <span class="speed-unit">Mbps</span>
-              </div>
+              <div class="speed-card-top"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22V8M5 15l7-7 7 7"/><path d="M3 3h18"/></svg><span>Upload</span></div>
+              <div class="speed-val-row"><span id="ul-val" class="big-speed">--</span><span class="speed-unit">Mbps</span></div>
               <div class="speed-spark" id="ul-spark"></div>
             </div>
           </section>
-
-          <!-- Run Test Button -->
           <section class="cta-section">
             <button id="run-btn" class="run-btn">
               <span class="run-btn-glow"></span>
@@ -151,40 +112,124 @@
             </button>
             <p id="test-status" class="test-status"></p>
           </section>
-
-          <!-- Connection Info Card -->
           <section class="info-card-section">
             <div class="section-title">Connection Info</div>
             <div class="info-grid">
-              <div class="info-item">
-                <span class="info-label">Type</span>
-                <span class="info-val" id="info-type">—</span>
-              </div>
-              <div class="info-item">
-                <span class="info-label">Effective</span>
-                <span class="info-val" id="info-eff">—</span>
-              </div>
-              <div class="info-item">
-                <span class="info-label">Downlink</span>
-                <span class="info-val" id="info-dl">—</span>
-              </div>
-              <div class="info-item">
-                <span class="info-label">RTT</span>
-                <span class="info-val" id="info-rtt">—</span>
-              </div>
-              <div class="info-item">
-                <span class="info-label">Save Data</span>
-                <span class="info-val" id="info-save">—</span>
-              </div>
-              <div class="info-item">
-                <span class="info-label">Online</span>
-                <span class="info-val" id="info-online">—</span>
-              </div>
+              <div class="info-item"><span class="info-label">Type</span><span class="info-val" id="info-type">—</span></div>
+              <div class="info-item"><span class="info-label">Effective</span><span class="info-val" id="info-eff">—</span></div>
+              <div class="info-item"><span class="info-label">Downlink</span><span class="info-val" id="info-dl">—</span></div>
+              <div class="info-item"><span class="info-label">RTT</span><span class="info-val" id="info-rtt">—</span></div>
+              <div class="info-item"><span class="info-label">Save Data</span><span class="info-val" id="info-save">—</span></div>
+              <div class="info-item"><span class="info-label">Online</span><span class="info-val" id="info-online">—</span></div>
             </div>
           </section>
+        </div>
+      </div>
 
-        </div><!-- /page-scroll -->
-      </div><!-- /page-dashboard -->
+      <!-- ── NETWORK INFO PAGE ── -->
+      <div id="page-netinfo" class="page">
+        <div class="page-scroll">
+          <div class="page-header">
+            <h2 class="page-h2">Network Info</h2>
+            <button id="refresh-netinfo" class="ghost-btn">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+              Refresh
+            </button>
+          </div>
+
+          <!-- ISP Card -->
+          <div class="section-title">ISP & IP Address</div>
+          <div class="ni-card" id="isp-card">
+            <div class="ni-loading" id="isp-loading">
+              <div class="ni-spinner"></div><span>Looking up ISP info…</span>
+            </div>
+            <div class="ni-content hidden" id="isp-content">
+              <div class="isp-hero">
+                <div class="isp-icon">🌐</div>
+                <div class="isp-main">
+                  <div class="isp-name" id="isp-name">—</div>
+                  <div class="isp-org" id="isp-org">—</div>
+                </div>
+                <div class="vpn-badge hidden" id="vpn-badge">VPN</div>
+              </div>
+              <div class="ni-grid">
+                <div class="ni-item"><span class="ni-label">Public IP</span><span class="ni-val" id="isp-ip">—</span></div>
+                <div class="ni-item"><span class="ni-label">IP Version</span><span class="ni-val" id="isp-ipver">—</span></div>
+                <div class="ni-item"><span class="ni-label">ASN</span><span class="ni-val" id="isp-asn">—</span></div>
+                <div class="ni-item"><span class="ni-label">Country</span><span class="ni-val" id="isp-country">—</span></div>
+                <div class="ni-item"><span class="ni-label">Region</span><span class="ni-val" id="isp-region">—</span></div>
+                <div class="ni-item"><span class="ni-label">City</span><span class="ni-val" id="isp-city">—</span></div>
+                <div class="ni-item"><span class="ni-label">Timezone</span><span class="ni-val" id="isp-tz">—</span></div>
+                <div class="ni-item"><span class="ni-label">Hostname</span><span class="ni-val" id="isp-host">—</span></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cell / Signal Card -->
+          <div class="section-title mt-20">Signal & Cell Info</div>
+          <div class="ni-card">
+            <div class="signal-bars-row">
+              <div class="signal-visual" id="signal-visual">
+                <div class="sig-bar b1"></div>
+                <div class="sig-bar b2"></div>
+                <div class="sig-bar b3"></div>
+                <div class="sig-bar b4"></div>
+                <div class="sig-bar b5"></div>
+              </div>
+              <div class="signal-info">
+                <div class="signal-strength" id="signal-strength">Detecting…</div>
+                <div class="signal-type-badge" id="signal-type-badge">—</div>
+              </div>
+            </div>
+            <div class="ni-grid mt-12">
+              <div class="ni-item"><span class="ni-label">Network Type</span><span class="ni-val" id="cell-type">—</span></div>
+              <div class="ni-item"><span class="ni-label">Effective Type</span><span class="ni-val" id="cell-eff">—</span></div>
+              <div class="ni-item"><span class="ni-label">Downlink Est.</span><span class="ni-val" id="cell-dl">—</span></div>
+              <div class="ni-item"><span class="ni-label">Round Trip</span><span class="ni-val" id="cell-rtt">—</span></div>
+              <div class="ni-item"><span class="ni-label">Data Saver</span><span class="ni-val" id="cell-save">—</span></div>
+              <div class="ni-item"><span class="ni-label">Battery</span><span class="ni-val" id="cell-battery">—</span></div>
+            </div>
+          </div>
+
+          <!-- DNS Benchmark -->
+          <div class="section-title mt-20">DNS Benchmark</div>
+          <div class="ni-card">
+            <div id="dns-results" class="dns-list">
+              <div class="ni-loading"><div class="ni-spinner"></div><span>Tap "Run" to benchmark DNS servers</span></div>
+            </div>
+            <button id="run-dns-btn" class="run-btn run-btn-sm mt-12">
+              <span class="run-btn-glow"></span>
+              <span class="run-btn-inner">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                <span>Benchmark DNS</span>
+              </span>
+            </button>
+          </div>
+
+          <!-- VPN Detection -->
+          <div class="section-title mt-20">Privacy & Security</div>
+          <div class="ni-card">
+            <div class="ni-grid">
+              <div class="ni-item"><span class="ni-label">VPN Detected</span><span class="ni-val" id="vpn-status">—</span></div>
+              <div class="ni-item"><span class="ni-label">Proxy</span><span class="ni-val" id="proxy-status">—</span></div>
+              <div class="ni-item"><span class="ni-label">IPv6 Ready</span><span class="ni-val" id="ipv6-status">—</span></div>
+              <div class="ni-item"><span class="ni-label">WebRTC Leak</span><span class="ni-val" id="webrtc-status">—</span></div>
+            </div>
+          </div>
+
+          <!-- Location map hint -->
+          <div class="section-title mt-20">Approximate Location</div>
+          <div class="ni-card location-card" id="location-card">
+            <div class="location-coords">
+              <div class="loc-item"><span class="ni-label">Latitude</span><span class="ni-val" id="loc-lat">—</span></div>
+              <div class="loc-item"><span class="ni-label">Longitude</span><span class="ni-val" id="loc-lon">—</span></div>
+              <div class="loc-item"><span class="ni-label">Source</span><span class="ni-val" id="loc-src">IP-based</span></div>
+            </div>
+            <p class="loc-note">Location is estimated from your IP address — not GPS.</p>
+          </div>
+
+        </div>
+      </div>
 
       <!-- ── HISTORY PAGE ── -->
       <div id="page-history" class="page">
@@ -199,8 +244,6 @@
               <p>No tests yet.<br/>Run your first speed test!</p>
             </div>
           </div>
-
-          <!-- Chart -->
           <div class="chart-section hidden" id="chart-section">
             <div class="section-title">Speed Over Time</div>
             <canvas id="history-chart" height="160"></canvas>
@@ -211,14 +254,8 @@
       <!-- ── DIAGNOSTICS PAGE ── -->
       <div id="page-diag" class="page">
         <div class="page-scroll">
-          <div class="page-header">
-            <h2 class="page-h2">Diagnostics</h2>
-          </div>
-
-          <div class="diag-checks" id="diag-checks">
-            <!-- filled by JS -->
-          </div>
-
+          <div class="page-header"><h2 class="page-h2">Diagnostics</h2></div>
+          <div class="diag-checks" id="diag-checks"></div>
           <button id="run-diag-btn" class="run-btn run-btn-sm">
             <span class="run-btn-glow"></span>
             <span class="run-btn-inner">
@@ -226,11 +263,11 @@
               <span>Run Diagnostics</span>
             </span>
           </button>
-
           <div class="section-title mt-24">Network Score</div>
           <div class="score-wrap">
             <div class="score-ring" id="score-ring">
               <svg viewBox="0 0 120 120" class="score-svg">
+                <defs><linearGradient id="scoreGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#00f5d4"/><stop offset="100%" stop-color="#7b2ff7"/></linearGradient></defs>
                 <circle cx="60" cy="60" r="50" class="score-track"/>
                 <circle cx="60" cy="60" r="50" class="score-fill" id="score-arc"/>
               </svg>
@@ -241,21 +278,16 @@
             </div>
             <div class="score-breakdown" id="score-breakdown"></div>
           </div>
-
         </div>
       </div>
 
       <!-- ── SETTINGS PAGE ── -->
       <div id="page-settings" class="page">
         <div class="page-scroll">
-          <div class="page-header">
-            <h2 class="page-h2">Settings</h2>
-          </div>
-
+          <div class="page-header"><h2 class="page-h2">Settings</h2></div>
           <div class="settings-group">
             <div class="settings-label">Test Server</div>
-            <div class="setting-item">
-              <span>Server Region</span>
+            <div class="setting-item"><span>Server Region</span>
               <select id="setting-server" class="setting-select">
                 <option value="auto">Auto (Nearest)</option>
                 <option value="us">United States</option>
@@ -263,8 +295,7 @@
                 <option value="ap">Asia Pacific</option>
               </select>
             </div>
-            <div class="setting-item">
-              <span>Test Duration</span>
+            <div class="setting-item"><span>Test Duration</span>
               <select id="setting-duration" class="setting-select">
                 <option value="5">5 seconds</option>
                 <option value="10" selected>10 seconds</option>
@@ -272,55 +303,47 @@
               </select>
             </div>
           </div>
-
           <div class="settings-group">
             <div class="settings-label">Display</div>
-            <div class="setting-item">
-              <span>Units</span>
+            <div class="setting-item"><span>Units</span>
               <select id="setting-units" class="setting-select">
                 <option value="mbps" selected>Mbps</option>
                 <option value="kbps">Kbps</option>
               </select>
             </div>
           </div>
-
           <div class="settings-group">
             <div class="settings-label">Data</div>
-            <div class="setting-item">
-              <span>Local Storage</span>
+            <div class="setting-item"><span>Local Storage</span>
               <div class="toggle-wrap">
                 <input type="checkbox" id="toggle-storage" class="toggle-input" checked />
                 <label for="toggle-storage" class="toggle-label"></label>
               </div>
             </div>
-            <div class="setting-item" id="storage-info-row">
-              <span class="muted">Results stored</span>
-              <span id="storage-count" class="muted">0 records</span>
-            </div>
+            <div class="setting-item"><span class="muted">Results stored</span><span id="storage-count" class="muted">0 records</span></div>
           </div>
-
           <div class="settings-group">
             <div class="settings-label">About</div>
-            <div class="setting-item">
-              <span>Version</span><span class="muted">1.0.0</span>
-            </div>
-            <div class="setting-item">
-              <span>Install as App</span>
+            <div class="setting-item"><span>Version</span><span class="muted">2.0.0</span></div>
+            <div class="setting-item"><span>Install as App</span>
               <button id="install-btn" class="ghost-btn" style="display:none">Install</button>
               <span id="install-status" class="muted">—</span>
             </div>
           </div>
-
         </div>
       </div>
 
     </div><!-- /pages -->
 
-    <!-- Bottom Nav -->
+    <!-- Bottom Nav — 5 tabs -->
     <nav class="bottom-nav">
       <button class="nav-btn active" data-page="dashboard">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
         <span>Speed</span>
+      </button>
+      <button class="nav-btn" data-page="netinfo">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/><circle cx="12" cy="10" r="3"/></svg>
+        <span>Network</span>
       </button>
       <button class="nav-btn" data-page="history">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
@@ -344,6 +367,7 @@
   <script src="js/speedtest.js"></script>
   <script src="js/diagnostics.js"></script>
   <script src="js/history-chart.js"></script>
+  <script src="js/netinfo.js"></script>
   <script src="js/app.js"></script>
   <script>
     if ('serviceWorker' in navigator) {

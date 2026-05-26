@@ -572,3 +572,110 @@ html, body {
   .bottom-nav { max-width: 420px; margin: 0 auto; }
   .status-bar { max-width: 420px; margin: 0 auto; }
 }
+
+/* ═══════════════════════════════════════════
+   Network Info Page — v2 additions
+═══════════════════════════════════════════ */
+
+/* ── NI Cards ────────────────────────────── */
+.ni-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px;
+  margin-bottom: 6px;
+}
+.mt-20 { margin-top: 20px; }
+.mt-12 { margin-top: 12px; }
+
+/* ── Loading spinner ─────────────────────── */
+.ni-loading {
+  display: flex; align-items: center; gap: 10px;
+  color: var(--text3); font-size: 13px; padding: 8px 0;
+}
+.ni-spinner {
+  width: 18px; height: 18px; border-radius: 50%;
+  border: 2px solid var(--border2);
+  border-top-color: var(--teal);
+  animation: spin 0.8s linear infinite; flex-shrink: 0;
+}
+
+/* ── ISP Hero ────────────────────────────── */
+.isp-hero {
+  display: flex; align-items: center; gap: 14px; margin-bottom: 14px;
+  padding-bottom: 14px; border-bottom: 1px solid var(--border);
+}
+.isp-icon {
+  font-size: 28px; width: 48px; height: 48px;
+  background: var(--teal-dim); border-radius: 12px;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.isp-main { flex: 1; min-width: 0; }
+.isp-name {
+  font-family: var(--font-display); font-size: 17px; font-weight: 600;
+  color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.isp-org { font-size: 12px; color: var(--text3); margin-top: 2px; }
+.vpn-badge {
+  background: rgba(255,77,109,0.15); border: 1px solid var(--red);
+  color: var(--red); font-family: var(--font-mono); font-size: 10px;
+  padding: 3px 8px; border-radius: 8px; flex-shrink: 0;
+}
+
+/* ── NI Grid ─────────────────────────────── */
+.ni-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+}
+.ni-item { display: flex; flex-direction: column; gap: 3px; }
+.ni-label { font-size: 10px; color: var(--text3); text-transform: uppercase; letter-spacing: 1px; }
+.ni-val { font-family: var(--font-mono); font-size: 12px; color: var(--text); word-break: break-all; }
+
+/* ── Signal Bars ─────────────────────────── */
+.signal-bars-row {
+  display: flex; align-items: center; gap: 16px; margin-bottom: 4px;
+}
+.signal-visual {
+  display: flex; align-items: flex-end; gap: 3px; height: 36px;
+}
+.sig-bar {
+  width: 8px; border-radius: 2px;
+  background: rgba(255,255,255,0.08);
+  transition: background 0.4s ease, box-shadow 0.4s ease;
+}
+.b1 { height: 8px;  }
+.b2 { height: 13px; }
+.b3 { height: 18px; }
+.b4 { height: 25px; }
+.b5 { height: 34px; }
+
+.signal-info { display: flex; flex-direction: column; gap: 5px; }
+.signal-strength {
+  font-family: var(--font-display); font-size: 18px; font-weight: 600; color: var(--text);
+}
+.signal-type-badge {
+  font-family: var(--font-mono); font-size: 11px; padding: 3px 10px;
+  border-radius: 10px; display: inline-block; width: fit-content;
+}
+.badge-wifi  { background: var(--teal-dim);   color: var(--teal);   border: 1px solid var(--teal); }
+.badge-cell  { background: var(--purple-dim); color: #a374f0;       border: 1px solid #a374f0; }
+
+/* ── DNS Benchmark ───────────────────────── */
+.dns-list { display: flex; flex-direction: column; gap: 10px; }
+.dns-row { display: flex; flex-direction: column; gap: 5px; }
+.dns-row-top {
+  display: flex; align-items: center; gap: 8px;
+}
+.dns-name { font-size: 13px; color: var(--text); font-weight: 500; flex: 1; }
+.dns-ip   { font-family: var(--font-mono); font-size: 10px; color: var(--text3); }
+.dns-ms   { font-family: var(--font-mono); font-size: 11px; padding: 2px 8px; border-radius: 8px; }
+.dns-bar-wrap { height: 4px; background: var(--bg3); border-radius: 2px; overflow: hidden; }
+.dns-bar { height: 100%; border-radius: 2px; transition: width 0.8s ease; }
+
+/* ── Location Card ───────────────────────── */
+.location-card { }
+.location-coords { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-bottom: 10px; }
+.loc-item { display: flex; flex-direction: column; gap: 3px; }
+.loc-note { font-size: 11px; color: var(--text3); line-height: 1.4; }
+
+/* ── Refresh button icon ─────────────────── */
+.ghost-btn svg { vertical-align: middle; margin-right: 3px; }
