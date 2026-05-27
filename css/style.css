@@ -483,23 +483,26 @@ html, body {
   position: relative;
   -webkit-tap-highlight-color: transparent;
 }
-.nav-btn i { font-size: 22px; transition: color 0.15s ease; }
+.nav-btn svg { width: 22px; height: 22px; flex-shrink: 0; }
 .nav-btn span { margin-top: 1px; }
 
 /* Active pill indicator — Material 3 style */
+.nav-btn svg { transition: none; }
 .nav-btn.active { color: var(--on-bg); }
-.nav-btn.active i { color: var(--on-primary); }
+.nav-btn.active svg { stroke: var(--on-primary); }
+.nav-btn.active svg circle[fill="currentColor"],
+.nav-btn.active svg polygon { fill: var(--on-primary); }
 .nav-btn.active::before {
   content: ''; position: absolute;
-  top: 8px; left: 50%; transform: translateX(-50%);
-  width: 56px; height: 30px;
+  top: 6px; left: 50%; transform: translateX(-50%);
+  width: 60px; height: 28px;
   background: var(--primary);
   border-radius: var(--shape-full);
   z-index: 0;
 }
-.nav-btn.active i,
+.nav-btn.active svg,
 .nav-btn.active span { position: relative; z-index: 1; }
-.nav-btn.active span { color: var(--on-bg); }
+.nav-btn.active span { color: var(--on-s-var); font-size: 10px; }
 
 /* ── RIPPLE ─────────────────────────────── */
 .ripple {
