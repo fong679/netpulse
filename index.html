@@ -330,6 +330,7 @@
     <!-- Bottom Nav — 5 tabs -->
     <nav class="bottom-nav">
       <button class="nav-btn active" data-page="dashboard">
+      <span class="nav-pill"></span>
         <svg width="22" height="22" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="18" stroke-linecap="round" stroke-linejoin="round">
           <path d="M128 48C82 48 44 86 44 132c0 24 9.6 45.8 25.2 61.8"/>
           <path d="M186.8 193.8C202.4 177.8 212 156 212 132"/>
@@ -339,6 +340,7 @@
         <span>Speed</span>
       </button>
       <button class="nav-btn" data-page="netinfo">
+      <span class="nav-pill"></span>
         <svg width="22" height="22" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="18" stroke-linecap="round">
           <circle cx="128" cy="144" r="16" fill="currentColor" stroke="none"/>
           <path d="M90 108a54 54 0 0 1 76 0"/>
@@ -349,6 +351,7 @@
         <span>Network</span>
       </button>
       <button class="nav-btn" data-page="history">
+      <span class="nav-pill"></span>
         <svg width="22" height="22" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="18" stroke-linecap="round" stroke-linejoin="round">
           <polyline points="32,192 96,128 144,160 224,72"/>
           <polyline points="192,72 224,72 224,104"/>
@@ -356,12 +359,14 @@
         <span>History</span>
       </button>
       <button class="nav-btn" data-page="diag">
+      <span class="nav-pill"></span>
         <svg width="22" height="22" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="18" stroke-linecap="round" stroke-linejoin="round">
           <polyline points="24,128 72,128 96,56 128,200 160,96 184,128 232,128"/>
         </svg>
         <span>Diagnose</span>
       </button>
       <button class="nav-btn" data-page="settings">
+      <span class="nav-pill"></span>
         <svg width="22" height="22" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="18" stroke-linecap="round" stroke-linejoin="round">
           <circle cx="128" cy="128" r="36"/>
           <path d="M108 20h40l8 28a84 84 0 0 1 20 11.6l28-8 20 34.6-20 22a84 84 0 0 1 0 23.6l20 22-20 34.6-28-8A84 84 0 0 1 156 208l-8 28h-40l-8-28a84 84 0 0 1-20-11.6l-28 8L32 169.4l20-22a84 84 0 0 1 0-23.6l-20-22L52 66.8l28 8A84 84 0 0 1 100 48l8-28z"/>
@@ -372,6 +377,7 @@
 
   </div><!-- /app -->
 
+  <script src="js/pwa-install.js"></script>
   <script src="js/storage.js"></script>
   <script src="js/network.js"></script>
   <script src="js/gauge.js"></script>
@@ -385,5 +391,29 @@
       navigator.serviceWorker.register('sw.js').catch(()=>{});
     }
   </script>
+
+  <!-- Install Banner -->
+  <div id="install-banner" class="install-banner">
+    <div class="install-banner-icon">
+      <svg width="32" height="32" viewBox="0 0 256 256" fill="none">
+        <path d="M128 48C82 48 44 86 44 132c0 24 9.6 45.8 25.2 61.8" stroke="#4cde9e" stroke-width="18" stroke-linecap="round"/>
+        <path d="M186.8 193.8C202.4 177.8 212 156 212 132" stroke="#738aff" stroke-width="18" stroke-linecap="round"/>
+        <line x1="128" y1="132" x2="80" y2="92" stroke="#4cde9e" stroke-width="14" stroke-linecap="round"/>
+        <circle cx="128" cy="132" r="10" fill="#4cde9e"/>
+      </svg>
+    </div>
+    <div class="install-banner-text">
+      <span class="install-banner-title">Install NetPulse</span>
+      <span class="install-banner-sub">Add to home screen for the full app experience</span>
+    </div>
+    <button class="install-banner-btn" onclick="PWAInstall.triggerInstall()">Install</button>
+    <button class="install-banner-close" onclick="PWAInstall.hideBanner()" aria-label="Dismiss">
+      <svg width="16" height="16" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="22" stroke-linecap="round">
+        <line x1="48" y1="48" x2="208" y2="208"/>
+        <line x1="208" y1="48" x2="48" y2="208"/>
+      </svg>
+    </button>
+  </div>
+
 </body>
 </html>

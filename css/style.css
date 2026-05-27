@@ -479,30 +479,60 @@ html, body {
   background: none; border: none; cursor: pointer;
   color: var(--on-s-var); height: var(--nav-h);
   font-size: 10px; font-weight: 500; font-family: var(--font);
-  letter-spacing: 0.03em; transition: color 0.15s ease;
-  position: relative;
+  letter-spacing: 0.03em;
+  position: relative; overflow: hidden;
   -webkit-tap-highlight-color: transparent;
+  user-select: none; -webkit-user-select: none;
+  /* Native Android press feel */
+  transition: color 0.2s cubic-bezier(0.4,0,0.2,1);
 }
-.nav-btn svg { width: 22px; height: 22px; flex-shrink: 0; }
-.nav-btn span { margin-top: 1px; }
+.nav-btn svg {
+  width: 22px; height: 22px; flex-shrink: 0;
+  position: relative; z-index: 1;
+  transition: transform 0.2s cubic-bezier(0.34,1.56,0.64,1);
+}
+.nav-btn span {
+  margin-top: 1px; position: relative; z-index: 1;
+  transition: color 0.2s ease;
+}
 
-/* Active pill indicator — Material 3 style */
-.nav-btn svg { transition: none; }
-.nav-btn.active { color: var(--on-bg); }
-.nav-btn.active svg { stroke: var(--on-primary); }
-.nav-btn.active svg circle[fill="currentColor"],
-.nav-btn.active svg polygon { fill: var(--on-primary); }
-.nav-btn.active::before {
-  content: ''; position: absolute;
+/* Pressed state — scale down like native Android */
+.nav-btn:active svg { transform: scale(0.88); }
+
+/* Pill container — sits behind icon */
+.nav-btn .nav-pill {
+  position: absolute;
   top: 6px; left: 50%; transform: translateX(-50%);
-  width: 60px; height: 28px;
+  width: 0; height: 28px;
   background: var(--primary);
   border-radius: var(--shape-full);
   z-index: 0;
+  transition: width 0.25s cubic-bezier(0.4,0,0.2,1),
+              opacity 0.2s ease;
+  opacity: 0;
 }
-.nav-btn.active svg,
-.nav-btn.active span { position: relative; z-index: 1; }
-.nav-btn.active span { color: var(--on-s-var); font-size: 10px; }
+
+/* Active state */
+.nav-btn.active { color: var(--on-bg); }
+.nav-btn.active .nav-pill { width: 60px; opacity: 1; }
+.nav-btn.active svg { stroke: var(--on-primary); }
+.nav-btn.active svg circle[fill="currentColor"],
+.nav-btn.active svg polygon { fill: var(--on-primary); }
+.nav-btn.active span { color: var(--on-bg); }
+
+/* Touch ripple on nav */
+.nav-ripple {
+  position: absolute; border-radius: 50%;
+  background: rgba(76,222,158,0.15);
+  width: 56px; height: 56px;
+  top: 50%; left: 50%;
+  transform: translate(-50%,-50%) scale(0);
+  animation: nav-ripple 0.4s cubic-bezier(0,0,0.2,1) forwards;
+  pointer-events: none; z-index: 0;
+}
+@keyframes nav-ripple {
+  to { transform: translate(-50%,-50%) scale(1); opacity: 0; }
+}
 
 /* ── RIPPLE ─────────────────────────────── */
 .ripple {
@@ -620,3 +650,59 @@ html, body {
     max-width: 430px; margin-left: auto; margin-right: auto;
   }
 }
+
+/* ── INSTALL BANNER ─────────────────────── */
+.install-banner {
+  position: fixed;
+  bottom: calc(var(--nav-h) + var(--safe-bot) + 10px);
+  left: 12px; right: 12px;
+  background: var(--md-s3);
+  border: 1px solid var(--md-outline2);
+  border-radius: var(--shape-lg);
+  padding: 12px 12px 12px 14px;
+  display: flex; align-items: center; gap: 12px;
+  z-index: 500;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+  transform: translateY(20px) scale(0.97);
+  opacity: 0; pointer-events: none;
+  transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1),
+              opacity 0.25s ease;
+}
+.install-banner.show {
+  transform: translateY(0) scale(1);
+  opacity: 1; pointer-events: all;
+}
+.install-banner-icon {
+  width: 44px; height: 44px; border-radius: var(--shape-md);
+  background: var(--primary-cont);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.install-banner-text {
+  flex: 1; display: flex; flex-direction: column; gap: 2px; min-width: 0;
+}
+.install-banner-title {
+  font-size: 13px; font-weight: 600; color: var(--on-bg);
+}
+.install-banner-sub {
+  font-size: 11px; color: var(--on-s-var); line-height: 1.4;
+}
+.install-banner-btn {
+  background: var(--primary); border: none;
+  color: var(--on-primary); font-family: var(--font);
+  font-size: 12px; font-weight: 600;
+  padding: 8px 16px; border-radius: var(--shape-full);
+  cursor: pointer; flex-shrink: 0;
+  transition: opacity 0.15s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+.install-banner-btn:active { opacity: 0.8; }
+.install-banner-close {
+  background: none; border: none; cursor: pointer;
+  color: var(--on-s-var); padding: 4px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: var(--shape-sm); flex-shrink: 0;
+  -webkit-tap-highlight-color: transparent;
+  transition: color 0.15s ease;
+}
+.install-banner-close:active { color: var(--on-bg); }
