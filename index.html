@@ -13,9 +13,7 @@
   <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png" />
   <link rel="apple-touch-icon" href="icons/icon-192.png" />
   <title>NetPulse — Network Diagnostics</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/index.js" defer></script>
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
@@ -28,20 +26,11 @@
         <div class="pulse-ring r1"></div>
         <div class="pulse-ring r2"></div>
         <div class="pulse-ring r3"></div>
-        <svg class="splash-logo" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="40" cy="40" r="30" stroke="url(#grad1)" stroke-width="2"/>
-          <path d="M20 40 Q30 20 40 40 Q50 60 60 40" stroke="url(#grad1)" stroke-width="3" stroke-linecap="round" fill="none"/>
-          <circle cx="40" cy="40" r="5" fill="url(#grad1)"/>
-          <defs>
-            <linearGradient id="grad1" x1="0" y1="0" x2="80" y2="80" gradientUnits="userSpaceOnUse">
-              <stop offset="0%" stop-color="#00f5d4"/><stop offset="100%" stop-color="#7b2ff7"/>
-            </linearGradient>
-          </defs>
-        </svg>
+        <i class="ph-bold ph-gauge" style="font-size:40px;color:#4cde9e"></i>
       </div>
       <h1 class="splash-title">NetPulse</h1>
       <p class="splash-sub">Network Diagnostics</p>
-      <div class="splash-loader"><div class="splash-bar"></div></div>
+      <div class="splash-loader"></div>
     </div>
   </div>
 
@@ -51,8 +40,7 @@
     <!-- Status Bar -->
     <div class="status-bar">
       <span id="conn-type" class="conn-badge">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M1 9l11 11L23 9l-2-2-9 9-9-9z"/></svg>
-        Detecting…
+        <i class="ph-bold ph-wifi-high"></i> Detecting…
       </span>
       <span class="app-name">NetPulse</span>
       <span id="live-time" class="live-time">--:--</span>
@@ -75,29 +63,29 @@
           </section>
           <section class="quick-stats">
             <div class="stat-card" id="stat-ping">
-              <div class="stat-icon ping-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+              <div class="stat-icon ping-icon"><i class="ph-bold ph-timer"></i></div>
               <div class="stat-info"><span class="stat-val" id="ping-val">--</span><span class="stat-label">Ping (ms)</span></div>
               <div class="stat-bar-wrap"><div class="stat-bar" id="ping-bar"></div></div>
             </div>
             <div class="stat-card" id="stat-jitter">
-              <div class="stat-icon jitter-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+              <div class="stat-icon jitter-icon"><i class="ph-bold ph-activity"></i></div>
               <div class="stat-info"><span class="stat-val" id="jitter-val">--</span><span class="stat-label">Jitter (ms)</span></div>
               <div class="stat-bar-wrap"><div class="stat-bar" id="jitter-bar"></div></div>
             </div>
             <div class="stat-card" id="stat-loss">
-              <div class="stat-icon loss-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg></div>
+              <div class="stat-icon loss-icon"><i class="ph-bold ph-warning-circle"></i></div>
               <div class="stat-info"><span class="stat-val" id="loss-val">--</span><span class="stat-label">Packet Loss</span></div>
               <div class="stat-bar-wrap"><div class="stat-bar" id="loss-bar"></div></div>
             </div>
           </section>
           <section class="speed-cards">
             <div class="speed-card download-card">
-              <div class="speed-card-top"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v14M5 9l7 7 7-7"/><path d="M3 21h18"/></svg><span>Download</span></div>
+              <div class="speed-card-top"><i class="ph-bold ph-arrow-line-down"></i><span>Download</span></div>
               <div class="speed-val-row"><span id="dl-val" class="big-speed">--</span><span class="speed-unit">Mbps</span></div>
               <div class="speed-spark" id="dl-spark"></div>
             </div>
             <div class="speed-card upload-card">
-              <div class="speed-card-top"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22V8M5 15l7-7 7 7"/><path d="M3 3h18"/></svg><span>Upload</span></div>
+              <div class="speed-card-top"><i class="ph-bold ph-arrow-line-up"></i><span>Upload</span></div>
               <div class="speed-val-row"><span id="ul-val" class="big-speed">--</span><span class="speed-unit">Mbps</span></div>
               <div class="speed-spark" id="ul-spark"></div>
             </div>
@@ -106,7 +94,7 @@
             <button id="run-btn" class="run-btn">
               <span class="run-btn-glow"></span>
               <span class="run-btn-inner">
-                <svg class="run-icon" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                <i class="ph-bold ph-play run-icon" style="font-size:20px"></i>
                 <span id="run-label">Run Speed Test</span>
               </span>
             </button>
@@ -132,8 +120,7 @@
           <div class="page-header">
             <h2 class="page-h2">Network Info</h2>
             <button id="refresh-netinfo" class="ghost-btn">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
-              Refresh
+              <i class="ph-bold ph-arrows-clockwise" style="font-size:13px"></i> Refresh
             </button>
           </div>
 
@@ -200,7 +187,7 @@
             <button id="run-dns-btn" class="run-btn run-btn-sm mt-12">
               <span class="run-btn-glow"></span>
               <span class="run-btn-inner">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                <i class="ph-bold ph-globe" style="font-size:16px"></i>
                 <span>Benchmark DNS</span>
               </span>
             </button>
@@ -240,7 +227,7 @@
           </div>
           <div id="history-list" class="history-list">
             <div class="empty-state">
-              <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+              <i class="ph-bold ph-chart-line-up" style="font-size:52px;color:var(--text3)"></i>
               <p>No tests yet.<br/>Run your first speed test!</p>
             </div>
           </div>
@@ -259,7 +246,7 @@
           <button id="run-diag-btn" class="run-btn run-btn-sm">
             <span class="run-btn-glow"></span>
             <span class="run-btn-inner">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+              <i class="ph-bold ph-pulse" style="font-size:18px"></i>
               <span>Run Diagnostics</span>
             </span>
           </button>
@@ -338,23 +325,23 @@
     <!-- Bottom Nav — 5 tabs -->
     <nav class="bottom-nav">
       <button class="nav-btn active" data-page="dashboard">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        <i class="ph-bold ph-gauge"></i>
         <span>Speed</span>
       </button>
       <button class="nav-btn" data-page="netinfo">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/><circle cx="12" cy="10" r="3"/></svg>
+        <i class="ph-bold ph-broadcast"></i>
         <span>Network</span>
       </button>
       <button class="nav-btn" data-page="history">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+        <i class="ph-bold ph-chart-line-up"></i>
         <span>History</span>
       </button>
       <button class="nav-btn" data-page="diag">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        <i class="ph-bold ph-stethoscope"></i>
         <span>Diagnose</span>
       </button>
       <button class="nav-btn" data-page="settings">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        <i class="ph-bold ph-gear-six"></i>
         <span>Settings</span>
       </button>
     </nav>

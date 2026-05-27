@@ -118,7 +118,7 @@ const NetInfo = (() => {
     else if (dl >= 0.5) score = 2;
     else if (dl > 0)    score = 1;
 
-    const colors = ['#ff4d6d','#ff4d6d','#ffb347','#ffb347','#39d98a'];
+    const colors = ['#f28b82','#f28b82','#fdd663','#fdd663','#81c995'];
     const labels = ['Very Weak','Weak','Fair','Good','Excellent'];
 
     bars.forEach((b, i) => {

@@ -34,7 +34,7 @@ const HistoryChart = (() => {
       ctx.moveTo(PAD.left, y); ctx.lineTo(W - PAD.right, y);
       ctx.strokeStyle = 'rgba(255,255,255,0.05)';
       ctx.lineWidth = 1; ctx.stroke();
-      ctx.fillStyle = 'rgba(255,255,255,0.25)';
+      ctx.fillStyle = 'rgba(255,255,255,0.22)';
       ctx.font = '9px Space Mono, monospace';
       ctx.textAlign = 'right';
       ctx.fillText(Math.round((maxV / 4) * i), PAD.left - 4, y + 3);
@@ -73,8 +73,8 @@ const HistoryChart = (() => {
       });
     }
 
-    drawLine(dl, 'rgb(0,245,212)');
-    drawLine(ul, 'rgb(163,116,240)');
+    drawLine(dl, 'rgb(76,222,158)');
+    drawLine(ul, 'rgb(115,138,255)');
 
     // X-axis labels
     const labels = records.map(r => {
@@ -82,7 +82,7 @@ const HistoryChart = (() => {
       return `${d.getHours().toString().padStart(2,'0')}:${d.getMinutes().toString().padStart(2,'0')}`;
     }).reverse();
 
-    ctx.fillStyle = 'rgba(255,255,255,0.25)';
+    ctx.fillStyle = 'rgba(255,255,255,0.22)';
     ctx.font = '9px Space Mono, monospace';
     ctx.textAlign = 'center';
     const step = Math.ceil(labels.length / 4);
@@ -95,11 +95,11 @@ const HistoryChart = (() => {
 
     // Legend
     ctx.font = '10px DM Sans, sans-serif';
-    ctx.fillStyle = 'rgb(0,245,212)';
+    ctx.fillStyle = 'rgb(76,222,158)';
     ctx.textAlign = 'left';
     ctx.fillRect(W - 110, 4, 10, 3);
     ctx.fillText('↓ Download', W - 96, 9);
-    ctx.fillStyle = 'rgb(163,116,240)';
+    ctx.fillStyle = 'rgb(115,138,255)';
     ctx.fillRect(W - 110, 14, 10, 3);
     ctx.fillText('↑ Upload', W - 96, 19);
   }

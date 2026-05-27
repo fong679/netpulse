@@ -45,7 +45,7 @@ const Gauge = (() => {
         const label = Math.round((_max / 10) * i);
         const lr = R_OUTER + 22;
         ctx.font = '10px Space Mono, monospace';
-        ctx.fillStyle = 'rgba(255,255,255,0.3)';
+        ctx.fillStyle = 'rgba(255,255,255,0.25)';
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
         ctx.fillText(label, CX + lr * cos, CY + lr * sin);
@@ -60,9 +60,9 @@ const Gauge = (() => {
       const grad = ctx.createLinearGradient(
         CX - R_OUTER, CY, CX + R_OUTER, CY
       );
-      grad.addColorStop(0,   '#00f5d4');
-      grad.addColorStop(0.5, '#5af0ff');
-      grad.addColorStop(1,   '#7b2ff7');
+      grad.addColorStop(0,   '#4cde9e');
+      grad.addColorStop(0.5, '#6ee8b4');
+      grad.addColorStop(1,   '#738aff');
 
       ctx.beginPath();
       ctx.arc(CX, CY, (R_OUTER + R_INNER) / 2, START_ANGLE, endA);
@@ -74,7 +74,7 @@ const Gauge = (() => {
       // Glow
       ctx.beginPath();
       ctx.arc(CX, CY, (R_OUTER + R_INNER) / 2, START_ANGLE, endA);
-      ctx.strokeStyle = 'rgba(0,245,212,0.15)';
+      ctx.strokeStyle = 'rgba(76,222,158,0.12)';
       ctx.lineWidth   = (R_OUTER - R_INNER) + 8;
       ctx.stroke();
     }
